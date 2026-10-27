@@ -74,22 +74,30 @@ application binds to, use the `-p` flag. For example, this command will serve co
 $ serve-directory -p 80 ~/www
 ```
 
+| Option                | Description                                           |
+| :-------------------- | :---------------------------------------------------- |
+| `[FOLDER]`            | The directory to serve (default: `.`)                 |
+| `-p`, `--port <PORT>` | The port to bind to (default: `8080`)                 |
+| `-l`, `--localhost`   | Bind to `127.0.0.1` instead of the external interface |
+| `-v`, `--verbose`     | Log every request                                     |
+| `-h`, `--help`        | Print the help                                        |
+| `-V`, `--version`     | Print the version                                     |
+
 ## Acknowledgment
 A special thank you to the [serve](https://www.npmjs.com/package/serve) project for providing
 inspiration for this tool! Thank you as well to Material-UI for the icons used on the directory 
 webpage!
 
 This project is made possible by the work of the following great libraries:
-| Crate                                                         | Owners                      |
-| :------------------------------------------------------------ | :-------------------------- |
-| [build_html](https://crates.io/crates/build_html)             | Joseph Skubal               |
-| [env_logger](https://crates.io/crates/env_logger)             | The Rust Project Developers |
-| [lazy_static](https://crates.io/crates/lazy_static)           | The Rust Libs Team          |
-| [local_ipaddress](https://crates.io/crates/local_ipaddress)   | Egmkang Wang                |
-| [log](https://crates.io/crates/log)                           | The Rust Project Developers |
-| [structopt](https://crates.io/crates/structopt)               | Guillaume Pinot             |
-| [tokio](https://crates.io/crates/tokio)                       | Tokio Contributors          |
-| [warp](https://crates.io/crates/warp)                         | Sean McArthur               |
+| Crate                                                       | Owners                      |
+| :---------------------------------------------------------- | :-------------------------- |
+| [build_html](https://crates.io/crates/build_html)           | Joseph Skubal               |
+| [env_logger](https://crates.io/crates/env_logger)           | The Rust Project Developers |
+| [local_ipaddress](https://crates.io/crates/local_ipaddress) | Egmkang Wang                |
+| [log](https://crates.io/crates/log)                         | The Rust Project Developers |
+| [pico-args](https://crates.io/crates/pico-args)             | Yevhenii Reizner            |
+| [tokio](https://crates.io/crates/tokio)                     | Tokio Contributors          |
+| [warp](https://crates.io/crates/warp)                       | Sean McArthur               |
 
 And, of course, the [Rust language](https://rust-lang.org)!
 
