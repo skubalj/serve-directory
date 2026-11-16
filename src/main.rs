@@ -3,7 +3,7 @@
 use args::Arguments;
 use clap::Parser;
 use log::{LevelFilter, info};
-use std::net::{IpAddr, SocketAddr};
+use std::net::{Ipv4Addr, SocketAddr};
 use std::sync::LazyLock;
 use tokio::signal::ctrl_c;
 
@@ -31,9 +31,9 @@ async fn main() {
 }
 
 /// The address to bind to: loopback, or this machine's address on the local network
-fn ip_addr(localhost: bool) -> IpAddr {
+fn ip_addr(localhost: bool) -> Ipv4Addr {
     if localhost {
-        IpAddr::from([127, 0, 0, 1])
+        Ipv4Addr::LOCALHOST
     } else {
         local_ipaddress::get()
             .expect("No local IP address found")
