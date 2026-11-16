@@ -1,6 +1,6 @@
 //! Definitions for routes served by the program
 
-use crate::arguments;
+use crate::ARGUMENTS;
 use build_html::*;
 use log::debug;
 use std::fs::{DirEntry, read_dir};
@@ -18,7 +18,7 @@ const FILE_ICON: &str = include_str!("assets/file_icon.svg");
 
 /// The set of routes used by the program
 pub fn routes() -> BoxedFilter<(impl Reply,)> {
-    let handle_files = warp::fs::dir(&arguments().folder);
+    let handle_files = warp::fs::dir(&ARGUMENTS.folder);
     let handle_directories = warp::get()
         .and(warp::path::full())
         .and_then(path_to_html)
@@ -48,7 +48,7 @@ fn log_request(info: Info) {
 /// Renders the listing of the folder at the requested route
 async fn path_to_html(route: FullPath) -> Result<String, Rejection> {
     let route = route.as_str();
-    let dir = arguments().folder.join(route.trim_start_matches('/'));
+    let dir = ARGUMENTS.folder.join(route.trim_start_matches('/'));
     let entries = read_entries(&dir).ok_or_else(not_found)?;
 
     Ok(HtmlPage::new()

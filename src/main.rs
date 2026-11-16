@@ -1,23 +1,23 @@
 #![doc = include_str!("../README.md")]
 
 use args::Arguments;
+use clap::Parser;
 use log::{LevelFilter, info};
 use std::net::{IpAddr, SocketAddr};
-use std::sync::OnceLock;
+use std::sync::LazyLock;
 use tokio::signal::ctrl_c;
 
 mod args;
 mod routes;
 
-/// The command line arguments passed into the program
-static ARGUMENTS: OnceLock<Arguments> = OnceLock::new();
+/// The command line arguments passed into the program, parsed on first use
+static ARGUMENTS: LazyLock<Arguments> = LazyLock::new(Arguments::parse);
 
 #[tokio::main]
 async fn main() {
-    let args = arguments();
-    initialize_logger(args.verbose);
+    initialize_logger(ARGUMENTS.verbose);
 
-    let socket_addr = SocketAddr::from((ip_addr(args.localhost), args.port));
+    let socket_addr = SocketAddr::from((ip_addr(ARGUMENTS.localhost), ARGUMENTS.port));
     let server = warp::serve(routes::routes()).bind(socket_addr).await;
     info!("Server listening on http://{socket_addr}");
 
@@ -28,11 +28,6 @@ async fn main() {
         })
         .run()
         .await;
-}
-
-/// Get the parsed command line arguments
-fn arguments() -> &'static Arguments {
-    ARGUMENTS.get_or_init(Arguments::from_env)
 }
 
 /// The address to bind to: loopback, or this machine's address on the local network

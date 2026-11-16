@@ -16,7 +16,10 @@ keywords = ["server", "http"]
 build_html = "2"
 local_ipaddress = "0.1"
 log = "0.4"
-pico-args = "0.5"
+
+[dependencies.clap]
+version = "4"
+features = ["derive"]
 
 [dependencies.env_logger]
 version = "0.11"

@@ -92,10 +92,10 @@ This project is made possible by the work of the following great libraries:
 | Crate                                                       | Owners                      |
 | :---------------------------------------------------------- | :-------------------------- |
 | [build_html](https://crates.io/crates/build_html)           | Joseph Skubal               |
+| [clap](https://crates.io/crates/clap)                       | clap-rs Contributors        |
 | [env_logger](https://crates.io/crates/env_logger)           | The Rust Project Developers |
 | [local_ipaddress](https://crates.io/crates/local_ipaddress) | Egmkang Wang                |
 | [log](https://crates.io/crates/log)                         | The Rust Project Developers |
-| [pico-args](https://crates.io/crates/pico-args)             | Yevhenii Reizner            |
 | [tokio](https://crates.io/crates/tokio)                     | Tokio Contributors          |
 | [warp](https://crates.io/crates/warp)                       | Sean McArthur               |
 
