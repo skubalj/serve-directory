@@ -1,0 +1,56 @@
+body {
+    background: #efefef;
+}
+
+main {
+    box-sizing: border-box;
+    width: 80%;
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 10px;
+    border: 2px solid #999;
+    border-radius: 7px;
+    background: #e9e9e9;
+}
+
+h1 {
+    margin: 0;
+    padding: 10px;
+    font: x-large monospace;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    background: #f0f0f0;
+    color: black;
+    font-size: larger;
+    text-decoration: none;
+}
+
+a:hover {
+    border-color: #999;
+    text-decoration: underline;
+}
+
+svg {
+    flex: none;
+    fill: currentColor;
+}
+
+span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
