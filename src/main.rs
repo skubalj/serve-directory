@@ -1,17 +1,37 @@
 #![doc = include_str!("../README.md")]
 
-use args::Arguments;
 use clap::Parser;
 use log::{LevelFilter, info};
 use std::net::{Ipv4Addr, SocketAddr};
+use std::path::PathBuf;
 use std::sync::LazyLock;
 use tokio::signal::ctrl_c;
 
-mod args;
 mod routes;
 
 /// The command line arguments passed into the program, parsed on first use
 static ARGUMENTS: LazyLock<Arguments> = LazyLock::new(Arguments::parse);
+
+/// Serve files in the specified directory and subdirectories
+#[derive(Debug, Parser)]
+#[command(version)]
+pub struct Arguments {
+    /// The root directory that should be served
+    #[arg(default_value = ".")]
+    pub folder: PathBuf,
+
+    /// The port that the server should bind to
+    #[arg(short, long, default_value_t = 8080)]
+    pub port: u16,
+
+    /// Deploy on localhost, rather than binding to the external interface
+    #[arg(short, long)]
+    pub localhost: bool,
+
+    /// Log additional data to the console
+    #[arg(short, long)]
+    pub verbose: bool,
+}
 
 #[tokio::main]
 async fn main() {

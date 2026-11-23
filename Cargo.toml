@@ -1,6 +1,6 @@
 [package]
 name = "serve-directory"
-version = "1.0.0"
+version = "0.2.0"
 authors = ["Joseph Skubal"]
 edition = "2024"
 repository = "https://github.com/skubalj/serve-directory"
@@ -14,26 +14,12 @@ keywords = ["server", "http"]
 
 [dependencies]
 build_html = "2"
+clap = { version = "4", features = ["derive"] }
+env_logger = { version = "0.11", default-features = false, features = ["auto-color", "humantime"] }
 local_ipaddress = "0.1"
 log = "0.4"
-
-[dependencies.clap]
-version = "4"
-features = ["derive"]
-
-[dependencies.env_logger]
-version = "0.11"
-default-features = false
-features = ["auto-color", "humantime"]
-
-[dependencies.tokio]
-version = "1"
-features = ["macros", "rt-multi-thread", "signal"]
-
-[dependencies.warp]
-version = "0.4"
-default-features = false
-features = ["server"]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+warp = { version = "0.4", default-features = false, features = ["server"] }
 
 [profile.release]
 strip = true
